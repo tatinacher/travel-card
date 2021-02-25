@@ -1,3 +1,5 @@
+export const SERVER_URL = "http://localhost:1337";
+
 export type RequestProps = {
   method: string;
   url: string;
@@ -7,11 +9,11 @@ export type RequestProps = {
 export const request = async ({
   url,
   method,
-  params = {}
+  params = {},
 }: RequestProps): Promise<any> => {
   const headers = {
     "Content-Type": "application/json;charset=UTF-8",
-    Accept: "application/json"
+    Accept: "application/json",
   };
   const options =
     method === "get"
@@ -19,11 +21,11 @@ export const request = async ({
       : {
           headers,
           method,
-          body: JSON.stringify(params)
+          body: JSON.stringify(params),
         };
 
   try {
-    const response = await fetch(url, options);
+    const response = await fetch(SERVER_URL + "/" + url, options);
     const result = await response.json();
 
     if (!response.ok) {

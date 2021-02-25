@@ -1,31 +1,25 @@
 import * as React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components";
+import { Route, Switch } from "react-router";
 
-import { cards } from "./mock/cards";
-import { Card } from "./ui/organisms/card";
+import { Country, Main } from "./pages";
 
 export const App = () => (
-  <Cards>
-    {cards.map((card) => (
-      <CardWrapper>
-        <Card {...card} />
-      </CardWrapper>
-    ))}
+  <>
+    <Switch>
+      <Route path="/country/:id">
+        <Country />
+      </Route>
+      <Route path="/">
+        <Main />
+      </Route>
+    </Switch>
     <GlobalStyle />
-  </Cards>
+  </>
 );
 
 const GlobalStyle = createGlobalStyle`
   * {
     font-family: 'Roboto', sans-serif;
     }
-`;
-
-export const CardWrapper = styled.div`
-  padding: 10px;
-`;
-
-export const Cards = styled.div`
-  display: flex;
-  flex-wrap: wrap;
 `;

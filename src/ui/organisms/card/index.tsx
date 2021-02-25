@@ -1,4 +1,5 @@
 import * as React from "react";
+import { SERVER_URL } from "../../../lib/request";
 import styled from "styled-components";
 
 import { CardProps, Params } from "../../../lib/types";
@@ -12,7 +13,7 @@ export const Card: React.FC<CardProps> = ({
   <CardWrapper>
     <div>
       <PictureWrapper>
-        <PictureCard picture={picture} />
+        <PictureCard picture={SERVER_URL + picture.url} />
       </PictureWrapper>
       <span>{name}</span>
       <span>{country}</span>

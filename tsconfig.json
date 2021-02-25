@@ -6,7 +6,15 @@
     "module": "commonjs",
     "target": "es5",
     "lib": ["es5", "es6", "dom"],
-    "jsx": "react"
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+        "api": ["src/api"],
+        "assets": ["src/assets"],
+        "types": ["src/lib/types"],
+        "pages": ["src/pages"],
+        "ui": ["src/ui"]
+    }
   },
   "include": ["./src/**/*"]
 }

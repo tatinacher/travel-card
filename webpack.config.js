@@ -5,7 +5,11 @@ module.exports = {
   entry: "./src/index.tsx",
   output: {
     path: path.join(__dirname, "/dist"),
-    filename: "index-bundle.js"
+    filename: "index-bundle.js",
+    publicPath: '/'
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -34,7 +38,14 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: [".ts", ".tsx", ".js", ".json"],
+    alias: {
+      api: path.resolve(__dirname, 'src/api/'),
+      assets: path.resolve(__dirname, 'src/assets/'),
+      types: path.resolve(__dirname, 'src/lib/types/'),
+      pages: path.resolve(__dirname, 'src/pages/'),
+      ui: path.resolve(__dirname, 'src/ui/')
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
